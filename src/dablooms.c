@@ -204,6 +204,7 @@ int free_counting_bloom(counting_bloom_t *bloom)
     if (bloom != NULL) {
         free(bloom->hashes);
         bloom->hashes = NULL;
+        close(bloom->bitmap->fd);
         free(bloom->bitmap);
         free(bloom);
         bloom = NULL;
